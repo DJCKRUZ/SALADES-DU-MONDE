@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Salades du Monde - Créez Votre Bowl</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #4CAF50;
@@ -14,459 +16,465 @@
             --accent-color: #FF9800;
             --bg-color: #f5f9f5;
             --text-color: #2c3e50;
-            --card-bg: #ffffff;
-            --border-color: #e0e0e0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
 
         body {
             font-family: 'Roboto', sans-serif;
-            font-weight: 400;
-            line-height: 1.6;
-            background-color: var(--bg-color);
             color: var(--text-color);
+            background-color: var(--bg-color);
         }
 
-        header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            text-align: center;
-            padding: 3rem 1rem;
+        /* Navbar */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)) !important;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
-
-        header .tagline {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            font-weight: 300;
-        }
-
-        header .subtitle {
-            font-size: 1rem;
-            margin-top: 1rem;
-            background-color: rgba(255,255,255,0.2);
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            border-radius: 25px;
-        }
-
-        main {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        .intro {
-            text-align: center;
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        .intro h2 {
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .intro p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .steps {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .step {
-            background: var(--primary-color);
-            color: white;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        section {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            border-top: 4px solid var(--primary-color);
-        }
-
-        section h2 {
-            color: var(--secondary-color);
+        .navbar-brand {
             font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             font-weight: 700;
+            color: white !important;
         }
 
-        section h2::before {
-            content: '🥗';
-            font-size: 1.5rem;
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            margin-left: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
-        .ingredients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .nav-link:hover {
+            color: var(--accent-color) !important;
         }
 
-        .ingredient-card {
-            background: linear-gradient(145deg, #fafafa, #ffffff);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 1.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(76, 175, 80, 0.7), rgba(46, 125, 50, 0.7)), url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1200&h=600&fit=crop') center/cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        .ingredient-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
         }
 
-        .ingredient-card h3 {
-            color: var(--primary-color);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--accent-color);
+            border: none;
+            color: white;
+            padding: 12px 40px;
+            font-size: 1.1rem;
             font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
-        .ingredient-card p {
+        .btn-primary-custom:hover {
+            background-color: #ff8c00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 1rem auto 0;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .menu-card-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .menu-card-body {
+            padding: 1.5rem;
+        }
+
+        .menu-card h5 {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card-description {
             color: #666;
             font-size: 0.9rem;
-            line-height: 1.5;
+            margin-bottom: 1rem;
         }
 
-        .origin-badge {
-            display: inline-block;
-            background-color: var(--accent-color);
+        .menu-card-price {
             color: white;
-            font-size: 0.75rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 15px;
-            margin-top: 0.5rem;
-            font-weight: 600;
-        }
-
-        /* Country-specific badge colors and flag prefix via text */
-        .origin-badge[data-country="CI"] { background-color: #FF8C00; }
-        .origin-badge[data-country="MA"] { background-color: #C1272D; }
-        .origin-badge[data-country="FR"] { background-color: #0055A4; }
-        .origin-badge[data-country="IT"] { background-color: #009246; }
-        .origin-badge[data-country="ES"] { background-color: #C60B1E; }
-        .origin-badge[data-country="MX"] { background-color: #006847; }
-        .origin-badge[data-country="GR"] { background-color: #0D5EAF; }
-        .origin-badge[data-country="CA"] { background-color: #FF0000; }
-        .origin-badge[data-country="NO"] { background-color: #BA0C2F; }
-        .origin-badge[data-country="LB"] { background-color: #D7263D; }
-        .origin-badge[data-country="US"] { background-color: #3C3B6E; }
-        .origin-badge[data-country="EE"],
-        .origin-badge[data-country="MED"],
-        .origin-badge[data-country="ME"],
-        .origin-badge[data-country="HOME"],
-        .origin-badge[data-country="LOCAL"] { background-color: var(--accent-color); }
-
-        .price-info {
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            color: white;
-            border-radius: 12px;
-            margin-top: 2rem;
-        }
-
-        .price-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-info p {
-            opacity: 0.9;
-        }
-
-        .price-highlight {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-top: 1rem;
-            background-color: rgba(255,255,255,0.2);
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 0.75rem 1rem;
             border-radius: 8px;
+            font-weight: 600;
+            display: inline-block;
         }
 
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+
+        .about-img {
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            max-height: 500px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .about-text h3 {
+            color: var(--secondary-color);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .form-label {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(76, 175, 80, 0.25);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: white;
+            padding: 12px 40px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            color: white;
+        }
+
+        /* Footer */
         footer {
-            text-align: center;
-            padding: 3rem 1rem;
             background-color: #2c3e50;
             color: white;
-            margin-top: 3rem;
+            padding: 40px 0;
+            text-align: center;
         }
 
-        footer h3 {
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        footer a {
+        .social-icons a {
             display: inline-block;
+            width: 45px;
+            height: 45px;
             background-color: var(--primary-color);
             color: white;
-            text-decoration: none;
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            font-weight: 600;
+            border-radius: 50%;
+            line-height: 45px;
+            margin: 0 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        footer a:hover {
+        .social-icons a:hover {
             background-color: var(--accent-color);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            transform: translateY(-5px);
         }
 
-        @media (max-width: 1024px) {
-            .ingredients-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
+        footer p {
+            opacity: 0.8;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            header h1 {
+            .hero h1 {
                 font-size: 2rem;
             }
 
-            .steps {
-                gap: 1rem;
-            }
-
-            .step {
-                width: 60px;
-                height: 60px;
-                font-size: 1.5rem;
-            }
-
-            section {
-                padding: 1.5rem;
-            }
-
-            .ingredients-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .ingredient-card {
-                padding: 1rem;
-            }
-
-            .ingredient-card h3 {
+            .hero p {
                 font-size: 1rem;
             }
 
-            .ingredient-card p {
-                font-size: 0.88rem;
+            .section-title {
+                font-size: 1.8rem;
             }
 
-            .origin-badge {
-                font-size: 0.7rem;
-                padding: 0.2rem 0.6rem;
+            .menu-card-img {
+                height: 200px;
             }
         }
+    </style>
 
-        @media (max-width: 480px) {
-            header {
-                padding: 2rem 1rem;
-            }
-
-            header h1 {
-                font-size: 1.6rem;
-            }
-
-            .price-info {
-                padding: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>🥗 Salades du Monde</h1>
-        <p class="tagline">Composez votre bowl unique avec des ingrédients d'exception</p>
-        <span class="subtitle">100% Frais • 100% Personnalisable • 100% Délicieux</span>
-    </header>
-
-    <main>
-        <div class="intro">
-            <h2>Comment ça marche ?</h2>
-            <p>Choisissez vos ingrédients préférés parmi notre sélection mondiale et nous préparons votre salade fraîche sur mesure.</p>
-            <div class="steps">
-                <div class="step">1</div>
-                <div class="step">2</div>
-                <div class="step">3</div>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">🥗 Salades du Monde</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#menu">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">À propos de nous</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">Choisissez → Personnalisez → Dégustez</p>
         </div>
+    </nav>
 
-        <!-- Sections required by the exercise: Entrées, Plats principaux, Desserts -->
-        <section id="entrees">
-            <h2>Entrées</h2>
-            <ul>
-                <li>
-                    <strong>Salade Ivoirienne</strong>
-                    <p>Salade fraîche de gombo et mangue, assaisonnée d'une vinaigrette arachide-citron.</p>
-                </li>
-                <li>
-                    <strong>Brik Marocain</strong>
-                    <p>Feuilleté croustillant garni de légumes et d'épices, servi chaud.</p>
-                </li>
-                <li>
-                    <strong>Tomates Cerises & Feta</strong>
-                    <p>Tomates juteuses, feta émiettée et herbes fraîches avec un filet d'huile d'olive.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section id="plats-principaux">
-            <h2>Plats principaux</h2>
-            <ul>
-                <li>
-                    <strong>Poisson Fumé Ivoirien Bowl</strong>
-                    <p>Poisson fumé, riz de lentilles, légumes croquants et chermoula.</p>
-                </li>
-                <li>
-                    <strong>Kefta Bowl</strong>
-                    <p>Kefta grillée, couscous aux herbes et légumes rôtis.</p>
-                </li>
-                <li>
-                    <strong>Poulet Grillé & Avocat</strong>
-                    <p>Poulet mariné, avocat crémeux et salade mesclun avec vinaigrette citron-olive.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section id="desserts">
-            <h2>Desserts</h2>
-            <ul>
-                <li>
-                    <strong>Mangue Ivoirienne</strong>
-                    <p>Mangue fraîche tranchée, servie nature avec un zeste de citron vert.</p>
-                </li>
-                <li>
-                    <strong>Orange à la Marocaine</strong>
-                    <p>Orange tranchée, parfumée à la fleur d'oranger et parsemée d'amandes torréfiées.</p>
-                </li>
-                <li>
-                    <strong>Fondant Chocolat</strong>
-                    <p>Moelleux au chocolat servi tiède avec coulis de fruits rouges.</p>
-                </li>
-            </ul>
-        </section>
-
-        <!-- Replaced original multi-section ingredient grid with the exercise-required sections -->
-        <section id="entrees">
-            <h2>Entrées</h2>
-            <ul>
-                <li>
-                    <strong>Salade Ivoirienne</strong>
-                    <p>Salade fraîche de gombo et mangue, assaisonnée d'une vinaigrette arachide-citron.</p>
-                </li>
-                <li>
-                    <strong>Brik Marocain</strong>
-                    <p>Feuilleté croustillant garni de légumes et d'épices, servi chaud.</p>
-                </li>
-                <li>
-                    <strong>Tomates Cerises & Feta</strong>
-                    <p>Tomates juteuses, feta émiettée et herbes fraîches avec un filet d'huile d'olive.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section id="plats-principaux">
-            <h2>Plats principaux</h2>
-            <ul>
-                <li>
-                    <strong>Poisson Fumé Ivoirien Bowl</strong>
-                    <p>Poisson fumé, riz de lentilles, légumes croquants et chermoula.</p>
-                </li>
-                <li>
-                    <strong>Kefta Bowl</strong>
-                    <p>Kefta grillée, couscous aux herbes et légumes rôtis.</p>
-                </li>
-                <li>
-                    <strong>Poulet Grillé & Avocat</strong>
-                    <p>Poulet mariné, avocat crémeux et salade mesclun avec vinaigrette citron-olive.</p>
-                </li>
-            </ul>
-        </section>
-
-        <section id="desserts">
-            <h2>Desserts</h2>
-            <ul>
-                <li>
-                    <strong>Mangue Ivoirienne</strong>
-                    <p>Mangue fraîche tranchée, servie nature avec un zeste de citron vert.</p>
-                </li>
-                <li>
-                    <strong>Orange à la Marocaine</strong>
-                    <p>Orange tranchée, parfumée à la fleur d'oranger et parsemée d'amandes torréfiées.</p>
-                </li>
-                <li>
-                    <strong>Fondant Chocolat</strong>
-                    <p>Moelleux au chocolat servi tiède avec coulis de fruits rouges.</p>
-                </li>
-            </ul>
-        </section>
-
-        <div class="price-info">
-            <h3>💰 Tarifs en FCFA (XOF)</h3>
-            <p class="price-highlight">Formule Découverte (3 ingrédients) : 5 840 FCFA</p>
-            <p class="price-highlight">Formule Signature (5 ingrédients) : 7 810 FCFA</p>
-            <p class="price-highlight">Formule Gourmande (7+ ingrédients) : 9 775 FCFA</p>
-            <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.8;">1 EUR = 655,957 FCFA</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container h-100">
+            <div class="row align-items-center h-100">
+                <div class="col-12">
+                    <h1>Bienvenue à Salades du Monde</h1>
+                    <p>Composez votre bowl unique avec des ingrédients d'exception provenant des quatre coins du monde</p>
+                    <button class="btn btn-primary-custom" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">Découvrir le Menu</button>
+                </div>
+            </div>
         </div>
-    </main>
+    </section>
 
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <h2 class="section-title">Notre Menu</h2>
+            <div class="row g-4">
+                <!-- Menu Item 1 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card menu-card">
+                        <img src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=400&h=300&fit=crop" alt="Salade Ivoirienne" class="menu-card-img">
+                        <div class="menu-card-body">
+                            <h5 class="card-title">Salade Ivoirienne</h5>
+                            <p class="menu-card-description">Salade fraîche de gombo et mangue, assaisonnée d'une vinaigrette arachide-citron avec légumes croquants.</p>
+                            <div class="menu-card-price">9,99 €</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card menu-card">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop" alt="Kefta Bowl" class="menu-card-img">
+                        <div class="menu-card-body">
+                            <h5 class="card-title">Kefta Bowl</h5>
+                            <p class="menu-card-description">Kefta grillée marocaine, couscous aux herbes fraîches et légumes rôtis avec sauce chermoula.</p>
+                            <div class="menu-card-price">10,99 €</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card menu-card">
+                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=400&h=300&fit=crop" alt="Poulet Grillé & Avocat" class="menu-card-img">
+                        <div class="menu-card-body">
+                            <h5 class="card-title">Poulet Grillé & Avocat</h5>
+                            <p class="menu-card-description">Poulet mariné aux épices, avocat crémeux et salade mesclun avec vinaigrette citron-olive.</p>
+                            <div class="menu-card-price">11,99 €</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card menu-card">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop" alt="Poisson Fumé Bowl" class="menu-card-img">
+                        <div class="menu-card-body">
+                            <h5 class="card-title">Poisson Fumé Bowl</h5>
+                            <p class="menu-card-description">Poisson fumé savoureux, riz de lentilles, légumes croquants et sauce méditerranéenne.</p>
+                            <div class="menu-card-price">12,99 €</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 5 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card menu-card">
+                        <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e4e31?w=400&h=300&fit=crop" alt="Tomates & Feta" class="menu-card-img">
+                        <div class="menu-card-body">
+                            <h5 class="card-title">Tomates Cerises & Feta</h5>
+                            <p class="menu-card-description">Tomates juteuses, feta émiettée, herbes fraîches et filet d'huile d'olive extra-vierge.</p>
+                            <div class="menu-card-price">8,99 €</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 6 -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card menu-card">
+                        <img src="https://images.unsplash.com/photo-1609810319537-4b24b2bab6f3?w=400&h=300&fit=crop" alt="Mangue Fraîche" class="menu-card-img">
+                        <div class="menu-card-body">
+                            <h5 class="card-title">Mangue Ivoirienne</h5>
+                            <p class="menu-card-description">Mangue fraîche tranchée servie nature avec un zeste de citron vert et noix de coco râpée.</p>
+                            <div class="menu-card-price">6,99 €</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">À Propos de Nous</h2>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=500&fit=crop" alt="Notre Restaurant" class="about-img">
+                </div>
+                <div class="col-lg-6 about-text">
+                    <h3>Découvrez Notre Histoire</h3>
+                    <p>Salades du Monde est née d'une passion pour les saveurs authentiques provenant de différentes cultures. Depuis sa création, notre restaurant s'engage à servir des plats frais et savoureux, préparés avec les meilleurs ingrédients.</p>
+                    <p>Nous croyons que la nourriture est un pont entre les cultures. Chaque salade que nous créons raconte une histoire d'un pays lointain. Notre équipe de chefs experts combine tradition et innovation pour offrir une expérience culinaire inoubliable.</p>
+                    <p>100% Frais • 100% Personnalisable • 100% Délicieux - Voilà notre promesse à chaque client qui franchit notre porte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Nous Contacter</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Votre Nom</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Votre Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="destination" class="form-label">Destination d'Intérêt</label>
+                            <select class="form-select" id="destination" name="destination" required>
+                                <option value="">-- Sélectionnez un menu --</option>
+                                <option value="ivoirienne">Salade Ivoirienne</option>
+                                <option value="kefta">Kefta Bowl</option>
+                                <option value="poulet">Poulet Grillé & Avocat</option>
+                                <option value="poisson">Poisson Fumé Bowl</option>
+                                <option value="tomates">Tomates & Feta</option>
+                                <option value="mangue">Mangue Ivoirienne</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Votre Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Posez-nous votre question..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit">Envoyer le Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <h3>Prêt à créer votre salade unique ?</h3>
-        <p style="margin-bottom: 1.5rem; opacity: 0.8;">Commandez en ligne ou venez nous visiter en boutique</p>
-        <a href="contact.html">📞 Contactez-nous pour Commander</a>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5>Salades du Monde</h5>
+                    <p>Votre destination pour les meilleures salades du monde entier</p>
+                    <div class="social-icons">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p style="margin-top: 2rem; font-size: 0.9rem;">&copy; 2026 Salades du Monde. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
